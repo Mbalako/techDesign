@@ -237,10 +237,27 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.remove('active');
   });
   
-  // Close mobile menu on link click
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
+// Close mobile menu on link click and reveal target section
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            target.classList.add('section-visible');
+            target.classList.remove('section-hidden');
+          }
+        });
+      });
+      
+      // Reveal sections when any anchor link is clicked (handles desktop and mobile)
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+          const href = link.getAttribute('href');
+          const target = document.querySelector(href);
+          if (target) {
+            target.classList.add('section-visible');
+            target.classList.remove('section-hidden');
+          }
     });
   });
   
