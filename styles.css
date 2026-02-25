@@ -200,6 +200,11 @@ body {
   transform: translateX(0);
 }
 
+/* allow anchored sections to sit below fixed header */
+section {
+  scroll-margin-top: 5rem; /* adjust to navbar height */
+}
+
 .section-visible {
   opacity: 1;
   transform: translateY(0);
